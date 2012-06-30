@@ -4,4 +4,9 @@
     <string name="activity">Activity</string>
     <string name="report">Report</string>
     <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="provider">Provider</string>
+    <string name="provider_desc">Host of the API</string>
+    <string name="checkin">Check-In</string>
+    <string name="incidence">Incidence</string>
 </resources>
