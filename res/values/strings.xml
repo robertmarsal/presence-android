@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Presence</string>
+    <string name="activity">Activity</string>
+    <string name="report">Report</string>
+    <string name="profile">Profile</string>
+</resources>
