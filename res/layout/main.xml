@@ -5,20 +5,21 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/Presence"
-        android:id="@+id/actionBar"
-        android:text="@string/brand"
+    <ImageView
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:padding="10dp"
-        android:textSize="25sp">
-    </TextView>
-    
+        android:layout_gravity="left"
+        android:background="@color/white"
+        android:contentDescription="@string/brand"
+        android:padding="5dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/presence" />
+
     <ListView
         android:id="@+id/mainMenu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent" >
     </ListView>
 
 </LinearLayout>
