@@ -8,11 +8,10 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:layout_gravity="left"
+        android:layout_gravity="center"
         android:background="@color/white"
         android:contentDescription="@string/brand"
-        android:padding="5dp"
-        android:scaleType="fitStart"
+        android:paddingTop="5dp"
         android:src="@drawable/presence" />
 
     <ListView
@@ -34,7 +33,7 @@
             android:id="@+id/mainButton"
             android:layout_alignParentRight="true" 
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="50dp">
         </Button>
 
     </RelativeLayout>

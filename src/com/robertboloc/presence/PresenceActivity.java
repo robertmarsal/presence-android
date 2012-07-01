@@ -5,6 +5,8 @@ import java.util.UUID;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -38,6 +40,9 @@ public class PresenceActivity extends Activity {
         ListView mainMenu = (ListView)findViewById(R.id.mainMenu);        	 
         mainMenu.setAdapter(menuAdapter);       
         mainMenu.setOnItemClickListener(mainMenuListener);
+        int[] colors = {0, 0xFF808080, 0};
+        mainMenu.setDivider(new GradientDrawable(Orientation.RIGHT_LEFT, colors));
+        mainMenu.setDividerHeight(1);
                 
     }
     
