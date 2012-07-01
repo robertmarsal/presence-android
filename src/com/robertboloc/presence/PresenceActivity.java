@@ -10,6 +10,9 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -31,9 +34,10 @@ public class PresenceActivity extends Activity {
         		new ArrayAdapter<String>(this,
         	        R.layout.list_item, OPTIONS);
         	 
-        ListView mainMenu = (ListView)findViewById(R.id.mainMenu);
-        	 
-        mainMenu.setAdapter(menuAdapter);
+        //configure the main menu
+        ListView mainMenu = (ListView)findViewById(R.id.mainMenu);        	 
+        mainMenu.setAdapter(menuAdapter);       
+        mainMenu.setOnItemClickListener(mainMenuListener);
                 
     }
     
@@ -59,6 +63,36 @@ public class PresenceActivity extends Activity {
         }
     }
     
+    /**
+     * OnItemClickListener for the ListView that contains the main menu
+     */
+    public OnItemClickListener mainMenuListener = new OnItemClickListener() {
+    	public void onItemClick(AdapterView<?> parent, View view,
+        		int position, long id) {
+        
+    		switch(position){
+    			case 0 : //Activity
+    				startActivity(new Intent(view.getContext(), 
+    						ActivityActivity.class));
+    				break;
+    			case 1 : //Report
+    				startActivity(new Intent(view.getContext(), 
+    						ReportActivity.class));
+    				break;
+    			case 2 : //Profile
+    				startActivity(new Intent(view.getContext(), 
+    						ProfileActivity.class));
+    				break;
+    		}        
+    	}
+    };
+    
+    /**
+     * Checks if this is the first run after the install, if it is it creates a 
+     * UUID variable that uniquely identifies the device
+     * 
+     * @return boolean
+     */
     public boolean onInstall(){
     	SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
     	boolean firstRun = p.getBoolean(PresenceConstants.FIRST_RUN, true);
@@ -68,7 +102,7 @@ public class PresenceActivity extends Activity {
     		p.edit().putString(PresenceConstants.UUID, uuid.toString()).commit();
     		p.edit().putBoolean(PresenceConstants.FIRST_RUN, false).commit();
     		return true;
-    	}
+    	} 	
     	return false;
     }
 }
