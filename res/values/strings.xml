@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="brand">Presence</string>
     <string name="activity">Activity</string>
     <string name="report">Report</string>
@@ -9,4 +10,6 @@
     <string name="provider_desc">Host of the API</string>
     <string name="checkin">Check-In</string>
     <string name="incidence">Incidence</string>
+    <string name="error_nouuid">There is a problem with your device. Please contact the administrator and reinstall the application</string>
+
 </resources>

@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.robertboloc.presence.lib.PresenceApiClient;
 import com.robertboloc.presence.pojo.User;
 
 public class PresenceActivity extends Activity {
