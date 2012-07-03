@@ -42,6 +42,11 @@
             android:label="@string/report"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
+         <activity
+            android:name=".IncidenceActivity"
+            android:label="@string/incidence"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
     </application>
 
 </manifest>
