@@ -3,34 +3,45 @@
     package="com.robertboloc.presence"
     android:versionCode="1"
     android:versionName="1.0" >
-    
+
     <uses-sdk android:minSdkVersion="10" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/presence"
         android:label="@string/brand" >
-        <activity android:name=".PresenceActivity" android:label="@string/brand"
-             android:theme="@android:style/Theme.NoTitleBar" >
-             <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
-                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-         </activity>
-         <activity android:name=".SettingsActivity" android:label="@string/settings"
-             android:theme="@android:style/Theme.NoTitleBar" >
-         </activity>
-         <activity android:name=".ProfileActivity" android:label="@string/profile"
-             android:theme="@android:style/Theme.NoTitleBar" >
-         </activity>
-         <activity android:name=".ActivityActivity" android:label="@string/activity"
-             android:theme="@android:style/Theme.NoTitleBar" >
-          </activity>
-          <activity android:name=".ReportActivity" android:label="@string/report"
-             android:theme="@android:style/Theme.NoTitleBar" >
-          </activity>
+        <activity
+            android:name=".PresenceActivity"
+            android:label="@string/brand"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/profile"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ActivityActivity"
+            android:label="@string/activity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ReportActivity"
+            android:label="@string/report"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
     </application>
 
 </manifest>
