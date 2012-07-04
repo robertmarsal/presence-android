@@ -9,9 +9,12 @@
     <string name="provider">Provider</string>
     <string name="provider_desc">Host of the API</string>
     <string name="checkin">Check-In</string>
+    <string name="checkout">Check-Out</string>
     <string name="incidence">Incidence</string>
     <string name="error_nouuid">There is a problem with your device. Please contact the administrator and reinstall the application</string>
     <string name="error_nowifi">Wifi is disabled. Please enable wifi to continue</string>
     <string name="error_noprovider">The service provider url is not set, please specify it to continue!</string>
     <string name="error_norequest">Request failed!</string>
+     <string name="error_nostatus">You are out of range!</string>
+
 </resources>

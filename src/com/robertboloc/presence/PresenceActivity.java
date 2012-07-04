@@ -19,9 +19,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.robertboloc.presence.lib.PresenceApiClient;
-import com.robertboloc.presence.pojo.User;
+import com.robertboloc.presence.pojo.Status;
 
 public class PresenceActivity extends Activity {
 
@@ -45,10 +46,14 @@ public class PresenceActivity extends Activity {
 				new int[] { 0, 0xFF808080, 0 }));
 		mainMenu.setDividerHeight(1);
 
-		// configure the main button
+		// create an instance of the api client
+		PresenceApiClient client = new PresenceApiClient(this);
+		// get the user status
+		Status status = client.getUserStatus();
+		
+		// configure the main button based on user status
 		final Button mainButton = (Button) findViewById(R.id.mainButton);
-		mainButton.getBackground().setColorFilter(0xFF00FF00,
-				PorterDuff.Mode.MULTIPLY);		
+		updateMainButtonStatus(mainButton, status.getStatus());
 	}
 
 	@Override
@@ -116,5 +121,26 @@ public class PresenceActivity extends Activity {
 			return true;
 		}
 		return false;
+	}
+	
+	private void updateMainButtonStatus(Button button, String status){
+		if (status.equalsIgnoreCase(PresenceConstants.CHECKOUT)) {			
+			//set text to checkin
+			button.setText(R.string.checkin);
+			// set button color to green
+			button.getBackground().setColorFilter(0xFF00FF00,
+					PorterDuff.Mode.MULTIPLY);
+		}else if(status.equalsIgnoreCase(PresenceConstants.CHECKIN)){
+			//set text to checkout
+			button.setText(R.string.checkout);
+			// set button color to red
+			button.getBackground().setColorFilter(0xFFFF0000,
+					PorterDuff.Mode.MULTIPLY);
+		}else { // status check failed -> hide button
+			button.setVisibility(View.INVISIBLE);
+			// notify the user that he is out of range
+			Toast.makeText(this, R.string.error_nostatus, Toast.LENGTH_LONG)
+			.show();
+		}
 	}
 }

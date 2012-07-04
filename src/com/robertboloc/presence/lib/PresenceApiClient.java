@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.robertboloc.presence.PresenceConstants;
 import com.robertboloc.presence.R;
 import com.robertboloc.presence.SettingsActivity;
+import com.robertboloc.presence.pojo.Status;
 import com.robertboloc.presence.pojo.Token;
 import com.robertboloc.presence.pojo.User;
 
@@ -143,6 +144,16 @@ public class PresenceApiClient {
 			return this.mapper.readValue(userData, User.class);
 		}catch (Exception e) {
 			return null;
+		}
+	}
+	
+	public Status getUserStatus(){
+		
+		String userStatus = this.get("user/status", null);
+		try{
+			return this.mapper.readValue(userStatus, Status.class);
+		}catch (Exception e) {
+			return new Status();
 		}
 	}
 
