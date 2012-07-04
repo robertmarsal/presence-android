@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Presence"
-    android:baselineAligned="true"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:baselineAligned="true"
     android:orientation="vertical" >
 
     <TextView
-        style="@style/Presence"
         android:id="@+id/profileName"
+        style="@style/Presence"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="25dp"
         android:paddingLeft="15dp"
+        android:paddingTop="25dp"
         android:textSize="25sp" />
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-5dp"
         android:paddingLeft="15dp"
-        android:textSize="18sp"
-        android:textColor="@color/gray"/>
+        android:textColor="@color/gray"
+        android:textSize="18sp" />
 
 </LinearLayout>

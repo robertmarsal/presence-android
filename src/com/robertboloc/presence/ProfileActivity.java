@@ -24,6 +24,7 @@ public class ProfileActivity extends Activity {
 		
 		final TextView userPosition = (TextView) findViewById(R.id.profilePosition);
 		userPosition.setText(user.getPosition());
+		
 	}
 
 }
