@@ -48,13 +48,7 @@ public class PresenceActivity extends Activity {
 		// configure the main button
 		final Button mainButton = (Button) findViewById(R.id.mainButton);
 		mainButton.getBackground().setColorFilter(0xFF00FF00,
-				PorterDuff.Mode.MULTIPLY);
-		
-		//PROVA
-		PresenceApiClient client = new PresenceApiClient(this);
-		User u = client.getUserData();
-
-		//PROVA ENDS
+				PorterDuff.Mode.MULTIPLY);		
 	}
 
 	@Override

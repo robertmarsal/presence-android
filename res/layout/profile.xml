@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
- <RelativeLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Presence"
-    android:layout_width="fill_parent" 
-    android:layout_height="fill_parent">
+    android:baselineAligned="true"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-</RelativeLayout>
+    <TextView
+        style="@style/Presence"
+        android:id="@+id/profileName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:paddingLeft="15dp"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/profilePosition"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-5dp"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        android:textColor="@color/gray"/>
+
+</LinearLayout>
