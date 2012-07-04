@@ -1,10 +1,8 @@
 package com.robertboloc.presence.lib;
 
 import java.security.KeyStore;
-import java.util.List;
 
 import org.apache.http.HttpVersion;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.PlainSocketFactory;
@@ -17,7 +15,6 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
-import org.json.JSONObject;
 
 public class PresenceHttpClient {
 

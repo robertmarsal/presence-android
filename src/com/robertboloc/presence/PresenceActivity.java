@@ -20,7 +20,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.robertboloc.presence.lib.PresenceApiClient;
 import com.robertboloc.presence.pojo.User;
 
@@ -50,7 +49,12 @@ public class PresenceActivity extends Activity {
 		final Button mainButton = (Button) findViewById(R.id.mainButton);
 		mainButton.getBackground().setColorFilter(0xFF00FF00,
 				PorterDuff.Mode.MULTIPLY);
+		
+		//PROVA
+		PresenceApiClient client = new PresenceApiClient(this);
+		User u = client.getUserData();
 
+		//PROVA ENDS
 	}
 
 	@Override

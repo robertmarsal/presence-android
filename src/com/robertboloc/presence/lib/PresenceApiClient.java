@@ -25,6 +25,7 @@ import com.robertboloc.presence.PresenceConstants;
 import com.robertboloc.presence.R;
 import com.robertboloc.presence.SettingsActivity;
 import com.robertboloc.presence.pojo.Token;
+import com.robertboloc.presence.pojo.User;
 
 public class PresenceApiClient {
 
@@ -97,12 +98,16 @@ public class PresenceApiClient {
 		}
 	}
 
-	public String get(String petition, List<NameValuePair> params) {
+	private String get(String petition, List<NameValuePair> params) {
 
 		// add the token to the params
 		if (this.token != null) {
+			//check if params list is empty and create it if so
+			if(params == null){
+				params = new LinkedList<NameValuePair>();
+			}
 			params.add(new BasicNameValuePair("token", String
-					.valueOf(this.token)));
+					.valueOf(this.token.getToken())));
 		}
 
 		// build the url
@@ -129,6 +134,16 @@ public class PresenceApiClient {
 		}
 
 		return responseBody;
+	}
+	
+	public User getUserData(){
+	
+		String userData = this.get("user/data", null);
+		try{
+			return this.mapper.readValue(userData, User.class);
+		}catch (Exception e) {
+			return null;
+		}
 	}
 
 }
