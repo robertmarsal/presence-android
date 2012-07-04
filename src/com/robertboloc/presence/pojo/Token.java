@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Token {
 	
 	private String token;
-	private Timestamp timestamp;
+	private Timestamp timeexpires;
 	
 	public String getToken() {
 		return token;
@@ -13,10 +13,11 @@ public class Token {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public Timestamp getTimestamp() {
-		return timestamp;
+	public Timestamp getTimeexpires() {
+		return timeexpires;
 	}
-	public void setTimestamp(Timestamp timestamp) {
-		this.timestamp = timestamp;
+	public void setTimeexpires(Timestamp timeexpires) {
+		this.timeexpires = timeexpires;
 	}
+
 }
