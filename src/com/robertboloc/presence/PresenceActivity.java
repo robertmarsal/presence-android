@@ -19,10 +19,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.robertboloc.presence.lib.PresenceApiClient;
 import com.robertboloc.presence.pojo.Status;
+import com.robertboloc.presence.pojo.User;
 
 public class PresenceActivity extends Activity {
 
@@ -45,9 +47,18 @@ public class PresenceActivity extends Activity {
 		mainMenu.setDivider(new GradientDrawable(Orientation.RIGHT_LEFT,
 				new int[] { 0, 0xFF808080, 0 }));
 		mainMenu.setDividerHeight(1);
-
+		
 		// create an instance of the api client
 		PresenceApiClient client = new PresenceApiClient(this);
+		User user = client.getUserData();
+
+		// populate the view with the data
+		final TextView userName = (TextView) findViewById(R.id.profileName);
+		userName.setText(user.getFirstname() + " " + user.getLastname());
+		
+		final TextView userPosition = (TextView) findViewById(R.id.profilePosition);
+		userPosition.setText(user.getPosition());
+
 		// get the user status
 		Status status = client.getUserStatus();
 		
