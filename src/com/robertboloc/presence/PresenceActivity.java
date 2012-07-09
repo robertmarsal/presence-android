@@ -160,10 +160,10 @@ public class PresenceActivity extends Activity {
 			// set button color to red
 			button.getBackground().setColorFilter(0xFFFF0000,
 					PorterDuff.Mode.MULTIPLY);
-		} else { // status check failed -> hide button
+		} else { // the app is not configured
 			button.setVisibility(View.INVISIBLE);
-			// notify the user that he is out of range
-			Toast.makeText(this, R.string.error_nostatus, Toast.LENGTH_LONG)
+			// notify the user the app is not configured
+			Toast.makeText(this, R.string.error_noconfig, Toast.LENGTH_LONG)
 					.show();
 		}
 	}

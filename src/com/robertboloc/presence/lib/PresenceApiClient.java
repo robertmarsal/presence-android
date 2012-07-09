@@ -101,20 +101,17 @@ public class PresenceApiClient {
 
 	private String get(String petition, List<NameValuePair> params) {
 
-		//check for token
-		if (this.token == null) {
-			return null;
-		}
-		
 		// check if params list is empty and create it if so
-		if(params == null){
+		if (params == null) {
 			params = new LinkedList<NameValuePair>();
 		}
-		
-		// add the token to the params
-		params.add(new BasicNameValuePair("token", String
+
+		// check for token
+		if (this.token != null) {
+			// add the token to the params
+			params.add(new BasicNameValuePair("token", String
 					.valueOf(this.token.getToken())));
-		
+		}
 		// build the url
 		String paramsString = URLEncodedUtils.format(params, "utf-8");
 		String url = this.provider + "/" + petition + "?" + paramsString;
@@ -140,23 +137,23 @@ public class PresenceApiClient {
 
 		return responseBody;
 	}
-	
-	public User getUserData(){
-	
+
+	public User getUserData() {
+
 		String userData = this.get("user/data", null);
-		try{
+		try {
 			return this.mapper.readValue(userData, User.class);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}
-	
-	public Status getUserStatus(){
-		
+
+	public Status getUserStatus() {
+
 		String userStatus = this.get("user/status", null);
-		try{
+		try {
 			return this.mapper.readValue(userStatus, Status.class);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return new Status();
 		}
 	}
