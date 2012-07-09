@@ -34,37 +34,49 @@ public class PresenceActivity extends Activity {
 		this.onInstall();
 		setContentView(R.layout.main);
 
-		final String[] OPTIONS = new String[] { getString(R.string.activity),
-				getString(R.string.report), getString(R.string.profile) };
-
-		ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(this,
-				R.layout.list_item, OPTIONS);
-
-		// configure the main menu
-		final ListView mainMenu = (ListView) findViewById(R.id.mainMenu);
-		mainMenu.setAdapter(menuAdapter);
-		mainMenu.setOnItemClickListener(mainMenuListener);
-		mainMenu.setDivider(new GradientDrawable(Orientation.RIGHT_LEFT,
-				new int[] { 0, 0xFF808080, 0 }));
-		mainMenu.setDividerHeight(1);
+		// get the views that form the status bar
+		final TextView userName = (TextView) findViewById(R.id.profileName);
+		final TextView userPosition = (TextView) findViewById(R.id.profilePosition);
 		
 		// create an instance of the api client
 		PresenceApiClient client = new PresenceApiClient(this);
+		
+		// get the user data
 		User user = client.getUserData();
 
-		// populate the view with the data
-		final TextView userName = (TextView) findViewById(R.id.profileName);
-		userName.setText(user.getFirstname() + " " + user.getLastname());
-		
-		final TextView userPosition = (TextView) findViewById(R.id.profilePosition);
-		userPosition.setText(user.getPosition());
+		// if we can not get the data we are offline
+		if (user != null) {
 
-		// get the user status
-		Status status = client.getUserStatus();
+			final String[] OPTIONS = new String[] {
+					getString(R.string.activity), getString(R.string.report),
+					getString(R.string.profile) };
+
+			ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(this,
+					R.layout.list_item, OPTIONS);
+
+			// configure the main menu
+			final ListView mainMenu = (ListView) findViewById(R.id.mainMenu);
+			mainMenu.setAdapter(menuAdapter);
+			mainMenu.setOnItemClickListener(mainMenuListener);
+			mainMenu.setDivider(new GradientDrawable(Orientation.RIGHT_LEFT,
+					new int[] { 0, 0xFF808080, 0 }));
+			mainMenu.setDividerHeight(1);
+
+			// populate the view with the data
+			userName.setText(user.getFirstname() + " " + user.getLastname());
+			userPosition.setText(user.getPosition());
+
+			// get the user status
+			Status status = client.getUserStatus();
+
+			// configure the main button based on user status
+			final Button mainButton = (Button) findViewById(R.id.mainButton);
+			updateMainButtonStatus(mainButton, status.getStatus());
 		
-		// configure the main button based on user status
-		final Button mainButton = (Button) findViewById(R.id.mainButton);
-		updateMainButtonStatus(mainButton, status.getStatus());
+		}else{ // display offline status
+			userName.setText(R.string.offline);
+			userPosition.setText(R.string.error_nostatus);
+		}
 	}
 
 	@Override
@@ -133,25 +145,25 @@ public class PresenceActivity extends Activity {
 		}
 		return false;
 	}
-	
-	private void updateMainButtonStatus(Button button, String status){
-		if (status.equalsIgnoreCase(PresenceConstants.CHECKOUT)) {			
-			//set text to checkin
+
+	private void updateMainButtonStatus(Button button, String status) {
+		if (status.equalsIgnoreCase(PresenceConstants.CHECKOUT)) {
+			// set text to checkin
 			button.setText(R.string.checkin);
 			// set button color to green
 			button.getBackground().setColorFilter(0xFF00FF00,
 					PorterDuff.Mode.MULTIPLY);
-		}else if(status.equalsIgnoreCase(PresenceConstants.CHECKIN)){
-			//set text to checkout
+		} else if (status.equalsIgnoreCase(PresenceConstants.CHECKIN)) {
+			// set text to checkout
 			button.setText(R.string.checkout);
 			// set button color to red
 			button.getBackground().setColorFilter(0xFFFF0000,
 					PorterDuff.Mode.MULTIPLY);
-		}else { // status check failed -> hide button
+		} else { // status check failed -> hide button
 			button.setVisibility(View.INVISIBLE);
 			// notify the user that he is out of range
 			Toast.makeText(this, R.string.error_nostatus, Toast.LENGTH_LONG)
-			.show();
+					.show();
 		}
 	}
 }

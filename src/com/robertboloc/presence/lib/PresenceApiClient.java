@@ -101,16 +101,20 @@ public class PresenceApiClient {
 
 	private String get(String petition, List<NameValuePair> params) {
 
-		// add the token to the params
-		if (this.token != null) {
-			//check if params list is empty and create it if so
-			if(params == null){
-				params = new LinkedList<NameValuePair>();
-			}
-			params.add(new BasicNameValuePair("token", String
-					.valueOf(this.token.getToken())));
+		//check for token
+		if (this.token == null) {
+			return null;
 		}
-
+		
+		// check if params list is empty and create it if so
+		if(params == null){
+			params = new LinkedList<NameValuePair>();
+		}
+		
+		// add the token to the params
+		params.add(new BasicNameValuePair("token", String
+					.valueOf(this.token.getToken())));
+		
 		// build the url
 		String paramsString = URLEncodedUtils.format(params, "utf-8");
 		String url = this.provider + "/" + petition + "?" + paramsString;
