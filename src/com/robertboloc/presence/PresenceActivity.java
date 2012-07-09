@@ -162,9 +162,6 @@ public class PresenceActivity extends Activity {
 					PorterDuff.Mode.MULTIPLY);
 		} else { // the app is not configured
 			button.setVisibility(View.INVISIBLE);
-			// notify the user the app is not configured
-			Toast.makeText(this, R.string.error_noconfig, Toast.LENGTH_LONG)
-					.show();
 		}
 	}
 }
