@@ -37,6 +37,7 @@ public class PresenceActivity extends Activity {
 		// get the views that form the status bar
 		final TextView userName = (TextView) findViewById(R.id.profileName);
 		final TextView userPosition = (TextView) findViewById(R.id.profilePosition);
+		final Button mainButton = (Button) findViewById(R.id.mainButton);
 		
 		// create an instance of the api client
 		PresenceApiClient client = new PresenceApiClient(this);
@@ -70,12 +71,12 @@ public class PresenceActivity extends Activity {
 			Status status = client.getUserStatus();
 
 			// configure the main button based on user status
-			final Button mainButton = (Button) findViewById(R.id.mainButton);
 			updateMainButtonStatus(mainButton, status.getStatus());
 		
 		}else{ // display offline status
 			userName.setText(R.string.offline);
 			userPosition.setText(R.string.error_nostatus);
+			updateMainButtonStatus(mainButton, PresenceConstants.NULL_STRING);
 		}
 	}
 
