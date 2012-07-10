@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -70,6 +71,7 @@ public class PresenceActivity extends Activity {
 			Status status = client.getUserStatus();
 
 			// configure the main button based on user status
+			mainButton.setOnClickListener(mainButtonListener);
 			updateMainButtonStatus(mainButton, status.getStatus());
 		
 		}else{ // display offline status
@@ -124,6 +126,15 @@ public class PresenceActivity extends Activity {
 			}
 		}
 	};
+	
+	/**
+	 * OnClickListener for the main button
+	 */
+	public OnClickListener mainButtonListener = new View.OnClickListener() {
+        public void onClick(View v) {
+        	
+        }
+    };
 
 	/**
 	 * Checks if this is the first run after the install, if it is it creates a
@@ -159,7 +170,7 @@ public class PresenceActivity extends Activity {
 			// set button color to red
 			button.getBackground().setColorFilter(0xFFFF0000,
 					PorterDuff.Mode.MULTIPLY);
-		} else { // the app is not configured
+		} else { // bad things happened, hide the button
 			button.setVisibility(View.INVISIBLE);
 		}
 	}
