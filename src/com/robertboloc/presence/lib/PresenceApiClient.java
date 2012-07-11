@@ -158,4 +158,31 @@ public class PresenceApiClient {
 		}
 	}
 
+	public Status checkin(){
+		
+		String checkin = this.get("user/checkin", null);
+		try{
+			Status status = this.mapper.readValue(checkin, Status.class);
+			if(status != null){
+				status.setStatus(PresenceConstants.CHECKIN);
+			}
+			return status;
+		}catch(Exception e){
+			return null;
+		}
+	}
+	
+	public Status checkout(){
+		
+		String checkout = this.get("user/checkout", null);
+		try{
+			Status status = this.mapper.readValue(checkout, Status.class);
+			if(status != null){
+				status.setStatus(PresenceConstants.CHECKOUT);
+			}
+			return status;
+		}catch(Exception e){
+			return null;
+		}
+	}
 }

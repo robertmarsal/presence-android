@@ -28,6 +28,8 @@ import com.robertboloc.presence.pojo.User;
 
 public class PresenceActivity extends Activity {
 
+	private static PresenceApiClient client;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class PresenceActivity extends Activity {
 		final Button mainButton = (Button) findViewById(R.id.mainButton);
 		
 		// create an instance of the api client
-		PresenceApiClient client = new PresenceApiClient(this);
+		client = new PresenceApiClient(this);
 		
 		// get the user data
 		User user = client.getUserData();
@@ -72,12 +74,12 @@ public class PresenceActivity extends Activity {
 
 			// configure the main button based on user status
 			mainButton.setOnClickListener(mainButtonListener);
-			updateMainButtonStatus(mainButton, status.getStatus());
+			updateMainButtonStatus(status.getStatus());
 		
 		}else{ // display offline status
 			userName.setText(R.string.offline);
 			userPosition.setText(R.string.error_nostatus);
-			updateMainButtonStatus(mainButton, PresenceConstants.NULL_STRING);
+			updateMainButtonStatus(PresenceConstants.NULL_STRING);
 		}
 	}
 
@@ -132,7 +134,13 @@ public class PresenceActivity extends Activity {
 	 */
 	public OnClickListener mainButtonListener = new View.OnClickListener() {
         public void onClick(View v) {
-        	
+        	Status st = client.getUserStatus();
+        	if(st.getStatus().equalsIgnoreCase(PresenceConstants.CHECKIN)){
+        		st = client.checkout();
+        	}else if(st.getStatus().equalsIgnoreCase(PresenceConstants.CHECKOUT)){
+        		st = client.checkin();
+        	}
+        	updateMainButtonStatus(st.getStatus());
         }
     };
 
@@ -157,7 +165,9 @@ public class PresenceActivity extends Activity {
 		return false;
 	}
 
-	private void updateMainButtonStatus(Button button, String status) {
+	private void updateMainButtonStatus(String status) {
+		final Button button = (Button) findViewById(R.id.mainButton);
+		
 		if (status.equalsIgnoreCase(PresenceConstants.CHECKOUT)) {
 			// set text to checkin
 			button.setText(R.string.checkin);
