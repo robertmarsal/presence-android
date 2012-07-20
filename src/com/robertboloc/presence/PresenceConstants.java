@@ -7,6 +7,7 @@ public class PresenceConstants {
 	public final static String PROVIDER = "provider";
 	public final static String CHECKIN = "checkin";
 	public final static String CHECKOUT = "checkout";
+	public final static String UNDEFINED = "undefined";
 	public final static String NULL_STRING = "";
 
 }

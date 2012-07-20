@@ -3,6 +3,8 @@ package com.robertboloc.presence;
 import java.util.UUID;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -21,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.robertboloc.presence.lib.PresenceApiClient;
 import com.robertboloc.presence.pojo.Status;
@@ -160,6 +163,13 @@ public class PresenceActivity extends Activity {
 			p.edit().putString(PresenceConstants.UUID, uuid.toString())
 					.commit();
 			p.edit().putBoolean(PresenceConstants.FIRST_RUN, false).commit();
+			
+			//show (only ONCE) the UUID on screen so the user can be created
+			AlertDialog uuidAlert = new AlertDialog.Builder(this).create();
+			uuidAlert.setTitle(R.string.popup_uuid_title);
+			uuidAlert.setMessage(uuid.toString());
+		    uuidAlert.show();
+
 			return true;
 		}
 		return false;
@@ -168,7 +178,8 @@ public class PresenceActivity extends Activity {
 	private void updateMainButtonStatus(String status) {
 		final Button button = (Button) findViewById(R.id.mainButton);
 		
-		if (status.equalsIgnoreCase(PresenceConstants.CHECKOUT)) {
+		if (status.equalsIgnoreCase(PresenceConstants.CHECKOUT) ||
+			status.equalsIgnoreCase(PresenceConstants.UNDEFINED)) {
 			// set text to checkin
 			button.setText(R.string.checkin);
 			// set button color to green
