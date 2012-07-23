@@ -1,7 +1,5 @@
 package com.robertboloc.presence.pojo;
 
-import java.sql.Timestamp;
-
 public class Status {
 
 	private String status = "";

@@ -31,19 +31,27 @@ public class ActivityListAdapter extends ArrayAdapter<Interval> {
 		TextView stopView = (TextView) rowView.findViewById(R.id.timestop);
 		TextView diffView = (TextView) rowView.findViewById(R.id.timediff);
 		
+		//get the interval
 		Interval i = values.get(position);
+		//timestart
 		Date startDate = new Date(i.getTimestart()*1000); 
 		startView.setText(startDate.toGMTString());
-		
+		//timestop
 		Date stopDate = new Date(i.getTimestop()*1000);
 		stopView.setText(stopDate.toGMTString());
-		
+		//timediff
 		int timediff = i.getTimediff();
 		diffView.setText(doubleDigit((timediff / 3600))+":"+doubleDigit(((timediff % 3600) / 60))+":"+doubleDigit((timediff % 60)));
 		
 		return rowView;
 	}
 	
+	/**
+	 * Returns a strings with leading zeros for numbers smaller than 10
+	 * 
+	 * @param digit
+	 * @return
+	 */
 	private String doubleDigit(int digit){
 		if(digit < 10){
 			return "0"+digit;
