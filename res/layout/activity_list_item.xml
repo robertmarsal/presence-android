@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="15dp">
+    <TextView
+        android:id="@+id/timediff"
+        android:layout_width="100dp"
+        android:layout_height="fill_parent"
+        android:gravity="fill"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right">
+        <TextView
+            android:id="@+id/timestart"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/green"
+            android:lines="1" 
+            android:maxLines="1"
+            android:textSize="15dp" android:minLines="1" android:minEms="20" android:maxEms="20" android:ems="20"
+        />
+        <TextView
+            android:id="@+id/timestop"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1" 
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textColor="@color/red"
+            android:lines="1" 
+            android:maxLines="1"
+            android:textSize="15dp" android:minLines="1" android:minEms="20" android:maxEms="20" android:ems="20"
+        />
+    </LinearLayout>
+</LinearLayout>

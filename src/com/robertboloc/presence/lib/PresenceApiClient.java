@@ -1,6 +1,7 @@
 package com.robertboloc.presence.lib;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,8 +25,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.robertboloc.presence.PresenceConstants;
 import com.robertboloc.presence.R;
 import com.robertboloc.presence.SettingsActivity;
+import com.robertboloc.presence.pojo.Interval;
 import com.robertboloc.presence.pojo.Status;
 import com.robertboloc.presence.pojo.Token;
+import com.robertboloc.presence.pojo.UActivity;
 import com.robertboloc.presence.pojo.User;
 
 public class PresenceApiClient {
@@ -158,30 +161,42 @@ public class PresenceApiClient {
 		}
 	}
 
-	public Status checkin(){
+	public ArrayList<Interval> getUserActivity() {
 		
-		String checkin = this.get("user/checkin", null);
+		String userActivity = this.get("user/activity", null);
 		try{
-			Status status = this.mapper.readValue(checkin, Status.class);
-			if(status != null){
-				status.setStatus(PresenceConstants.CHECKIN);
-			}
-			return status;
-		}catch(Exception e){
+			UActivity activity = this.mapper.readValue(userActivity, UActivity.class);
+			ArrayList<Interval> intervals = activity.get("intervals");
+			return intervals;
+		} catch (Exception e){
 			return null;
 		}
 	}
-	
-	public Status checkout(){
-		
+
+	public Status checkin() {
+
+		String checkin = this.get("user/checkin", null);
+		try {
+			Status status = this.mapper.readValue(checkin, Status.class);
+			if (status != null) {
+				status.setStatus(PresenceConstants.CHECKIN);
+			}
+			return status;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public Status checkout() {
+
 		String checkout = this.get("user/checkout", null);
-		try{
+		try {
 			Status status = this.mapper.readValue(checkout, Status.class);
-			if(status != null){
+			if (status != null) {
 				status.setStatus(PresenceConstants.CHECKOUT);
 			}
 			return status;
-		}catch(Exception e){
+		} catch (Exception e) {
 			return null;
 		}
 	}

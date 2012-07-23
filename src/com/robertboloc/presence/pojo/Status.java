@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Status {
 
 	private String status = "";
-	private Timestamp timestamp;
+	private long timestamp;
 	
 	public String getStatus() {
 		return status;
@@ -13,10 +13,10 @@ public class Status {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Timestamp getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Timestamp timestamp) {
+	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
 }
