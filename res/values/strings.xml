@@ -13,6 +13,9 @@
     <string name="incidence">Incidence</string>
     <string name="refresh">Refresh</string>
     <string name="offline">Offline</string>
+    <string name="startdate">Start Date</string>
+    <string name="enddate">End date</string>
+    <string name="generate">Generate</string>
     <string name="error_nouuid">There is a problem with your device. Please contact the administrator and reinstall the application</string>
     <string name="error_nowifi">Wifi is disabled. Please enable wifi to continue</string>
     <string name="error_noprovider">The service provider url is not set, please specify it to continue!</string>
