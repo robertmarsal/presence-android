@@ -26,6 +26,7 @@ import com.robertboloc.presence.PresenceConstants;
 import com.robertboloc.presence.R;
 import com.robertboloc.presence.SettingsActivity;
 import com.robertboloc.presence.pojo.Interval;
+import com.robertboloc.presence.pojo.Report;
 import com.robertboloc.presence.pojo.Status;
 import com.robertboloc.presence.pojo.Token;
 import com.robertboloc.presence.pojo.UActivity;
@@ -168,6 +169,17 @@ public class PresenceApiClient {
 			UActivity activity = this.mapper.readValue(userActivity, UActivity.class);
 			ArrayList<Interval> intervals = activity.get("intervals");
 			return intervals;
+		} catch (Exception e){
+			return null;
+		}
+	}
+	
+	public Report getUserReport(List<NameValuePair> params){
+		
+		String userReport = this.get("user/report", params);
+		try{
+			Report report = this.mapper.readValue(userReport, Report.class);
+			return report;
 		} catch (Exception e){
 			return null;
 		}
