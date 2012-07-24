@@ -7,6 +7,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,6 +34,7 @@ public class ReportActivity extends Activity {
 	public OnClickListener generateReportButtonListener = new View.OnClickListener() {
 		public void onClick(View v) {
 
+			// fetch the user data
 			final DatePicker startDate = (DatePicker) findViewById(R.id.startdate);
 			final DatePicker endDate = (DatePicker) findViewById(R.id.enddate);
 
@@ -41,18 +43,11 @@ public class ReportActivity extends Activity {
 			String end = endDate.getDayOfMonth() + "-" + endDate.getMonth()
 					+ "-" + endDate.getYear();
 
-			// instance of the api client
-			PresenceApiClient client = new PresenceApiClient(
-					getApplicationContext());
-
-			// add the user params
-			List<NameValuePair> params = new LinkedList<NameValuePair>();
-			params.add(new BasicNameValuePair("start", start));
-			params.add(new BasicNameValuePair("end", end));
-
-			// get the user report
-			Report report = client.getUserReport(params);
-			report.getCheckins();
+			// display the report
+			Intent i = new Intent(v.getContext(),ReportDisplayActivity.class);
+			i.putExtra("start", start);
+			i.putExtra("end", end);
+			startActivity(i);
 		}
 	};
 }
