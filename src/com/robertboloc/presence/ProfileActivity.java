@@ -17,7 +17,7 @@ public class ProfileActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile);
 
-		final Button updateProfileButton = (Button) findViewById(R.id.generateReport);
+		final Button updateProfileButton = (Button) findViewById(R.id.updateProfile);
 		updateProfileButton.setOnClickListener(updateProfileButtonListener);
 		
 		// get the user data
