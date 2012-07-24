@@ -5,8 +5,8 @@ public class Report {
 	private String start;
 	private String end;
 	private String time;
-	private int checkins;
-	private int incidences;
+	private String checkins;
+	private String incidences;
 	
 	public String getStart() {
 		return start;
@@ -26,17 +26,18 @@ public class Report {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public int getCheckins() {
+	public String getCheckins() {
 		return checkins;
 	}
-	public void setCheckins(int checkins) {
+	public void setCheckins(String checkins) {
 		this.checkins = checkins;
 	}
-	public int getIncidences() {
+	public String getIncidences() {
 		return incidences;
 	}
-	public void setIncidences(int incidences) {
+	public void setIncidences(String incidences) {
 		this.incidences = incidences;
 	}
+
 
 }

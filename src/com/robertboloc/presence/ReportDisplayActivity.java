@@ -9,6 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.robertboloc.presence.lib.PresenceApiClient;
 import com.robertboloc.presence.pojo.Report;
@@ -38,6 +39,17 @@ public class ReportDisplayActivity extends Activity {
 		Report report = client.getUserReport(params);
 		
 		//display the report
+		final TextView periodView = (TextView) findViewById(R.id.reportPeriod);
+		periodView.setText(report.getStart().replace('-','/')+" - "+report.getEnd().replace('-','/'));
+		
+		final TextView timeView = (TextView) findViewById(R.id.reportTime);
+		timeView.setText(report.getTime());
+		
+		final TextView checkinsView = (TextView) findViewById(R.id.reportCheckins);
+		checkinsView.setText(report.getCheckins());
+		
+		final TextView incidencesView = (TextView) findViewById(R.id.reportIncidences);
+		incidencesView.setText(report.getIncidences());
 	}
 
 }
