@@ -18,6 +18,6 @@
     <string name="error_noprovider">The service provider url is not set, please specify it to continue!</string>
     <string name="error_norequest">Request failed!</string>
     <string name="error_nostatus">You are out of range!</string>
-    <string name="popup_uuid_title">Device UUID</string> 
+    <string name="popup_uuid_title">Device UUID</string>
 
 </resources>

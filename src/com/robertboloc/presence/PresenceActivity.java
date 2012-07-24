@@ -30,13 +30,13 @@ import com.robertboloc.presence.pojo.User;
 public class PresenceActivity extends Activity {
 
 	private static PresenceApiClient client;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.onInstall();
 		setContentView(R.layout.main);
-		
+
 		this.refresh();
 
 	}
@@ -89,21 +89,22 @@ public class PresenceActivity extends Activity {
 			}
 		}
 	};
-	
+
 	/**
 	 * OnClickListener for the main button
 	 */
 	public OnClickListener mainButtonListener = new View.OnClickListener() {
-        public void onClick(View v) {
-        	Status st = client.getUserStatus();
-        	if(st.getStatus().equalsIgnoreCase(PresenceConstants.CHECKIN)){
-        		st = client.checkout();
-        	}else if(st.getStatus().equalsIgnoreCase(PresenceConstants.CHECKOUT)){
-        		st = client.checkin();
-        	}
-        	updateMainButtonStatus(st.getStatus());
-        }
-    };
+		public void onClick(View v) {
+			Status st = client.getUserStatus();
+			if (st.getStatus().equalsIgnoreCase(PresenceConstants.CHECKIN)) {
+				st = client.checkout();
+			} else if (st.getStatus().equalsIgnoreCase(
+					PresenceConstants.CHECKOUT)) {
+				st = client.checkin();
+			}
+			updateMainButtonStatus(st.getStatus());
+		}
+	};
 
 	/**
 	 * Checks if this is the first run after the install, if it is it creates a
@@ -121,12 +122,12 @@ public class PresenceActivity extends Activity {
 			p.edit().putString(PresenceConstants.UUID, uuid.toString())
 					.commit();
 			p.edit().putBoolean(PresenceConstants.FIRST_RUN, false).commit();
-			
-			//show (only ONCE) the UUID on screen so the user can be created
+
+			// show (only ONCE) the UUID on screen so the user can be created
 			AlertDialog uuidAlert = new AlertDialog.Builder(this).create();
 			uuidAlert.setTitle(R.string.popup_uuid_title);
 			uuidAlert.setMessage(uuid.toString());
-		    uuidAlert.show();
+			uuidAlert.show();
 
 			return true;
 		}
@@ -135,9 +136,9 @@ public class PresenceActivity extends Activity {
 
 	private void updateMainButtonStatus(String status) {
 		final Button button = (Button) findViewById(R.id.mainButton);
-		
-		if (status.equalsIgnoreCase(PresenceConstants.CHECKOUT) ||
-			status.equalsIgnoreCase(PresenceConstants.UNDEFINED)) {
+
+		if (status.equalsIgnoreCase(PresenceConstants.CHECKOUT)
+				|| status.equalsIgnoreCase(PresenceConstants.UNDEFINED)) {
 			// set text to checkin
 			button.setText(R.string.checkin);
 			// set button color to green
@@ -153,17 +154,17 @@ public class PresenceActivity extends Activity {
 			button.setVisibility(View.INVISIBLE);
 		}
 	}
-	
+
 	private void refresh() {
-		
+
 		// get the views that form the status bar
 		final TextView userName = (TextView) findViewById(R.id.profileName);
 		final TextView userPosition = (TextView) findViewById(R.id.profilePosition);
 		final Button mainButton = (Button) findViewById(R.id.mainButton);
-		
+
 		// create an instance of the api client
 		client = new PresenceApiClient(this);
-		
+
 		// get the user data
 		User user = client.getUserData();
 
@@ -195,8 +196,8 @@ public class PresenceActivity extends Activity {
 			// configure the main button based on user status
 			mainButton.setOnClickListener(mainButtonListener);
 			updateMainButtonStatus(status.getStatus());
-		
-		}else{ // display offline status
+
+		} else { // display offline status
 			userName.setText(R.string.offline);
 			userPosition.setText(R.string.error_nostatus);
 			updateMainButtonStatus(PresenceConstants.NULL_STRING);
