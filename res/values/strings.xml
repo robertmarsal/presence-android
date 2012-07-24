@@ -11,6 +11,7 @@
     <string name="checkin">Check-In</string>
     <string name="checkout">Check-Out</string>
     <string name="incidence">Incidence</string>
+    <string name="refresh">Refresh</string>
     <string name="offline">Offline</string>
     <string name="error_nouuid">There is a problem with your device. Please contact the administrator and reinstall the application</string>
     <string name="error_nowifi">Wifi is disabled. Please enable wifi to continue</string>

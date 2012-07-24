@@ -5,6 +5,12 @@
         android:id="@+id/incidence"
         android:icon="@drawable/ic_menu_notifications"
         android:title="@string/incidence"/>
+    
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_menu_refresh"
+        android:title="@string/refresh"/>
+        
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_menu_preferences"

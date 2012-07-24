@@ -36,52 +36,9 @@ public class PresenceActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.onInstall();
 		setContentView(R.layout.main);
-
-		// get the views that form the status bar
-		final TextView userName = (TextView) findViewById(R.id.profileName);
-		final TextView userPosition = (TextView) findViewById(R.id.profilePosition);
-		final Button mainButton = (Button) findViewById(R.id.mainButton);
 		
-		// create an instance of the api client
-		client = new PresenceApiClient(this);
-		
-		// get the user data
-		User user = client.getUserData();
+		this.refresh();
 
-		// if we can not get the data we are offline
-		if (user != null) {
-
-			final String[] OPTIONS = new String[] {
-					getString(R.string.activity), getString(R.string.report),
-					getString(R.string.profile) };
-
-			ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(this,
-					R.layout.list_item, OPTIONS);
-
-			// configure the main menu
-			final ListView mainMenu = (ListView) findViewById(R.id.mainMenu);
-			mainMenu.setAdapter(menuAdapter);
-			mainMenu.setOnItemClickListener(mainMenuListener);
-			mainMenu.setDivider(new GradientDrawable(Orientation.RIGHT_LEFT,
-					new int[] { 0, 0xFF808080, 0 }));
-			mainMenu.setDividerHeight(1);
-
-			// populate the view with the data
-			userName.setText(user.getFirstname() + " " + user.getLastname());
-			userPosition.setText(user.getPosition());
-
-			// get the user status
-			Status status = client.getUserStatus();
-
-			// configure the main button based on user status
-			mainButton.setOnClickListener(mainButtonListener);
-			updateMainButtonStatus(status.getStatus());
-		
-		}else{ // display offline status
-			userName.setText(R.string.offline);
-			userPosition.setText(R.string.error_nostatus);
-			updateMainButtonStatus(PresenceConstants.NULL_STRING);
-		}
 	}
 
 	@Override
@@ -97,6 +54,9 @@ public class PresenceActivity extends Activity {
 		switch (item.getItemId()) {
 		case R.id.incidence:
 			// TODO: show incindence screen
+			return true;
+		case R.id.refresh:
+			this.refresh();
 			return true;
 		case R.id.settings:
 			startActivity(new Intent(this, SettingsActivity.class));
@@ -191,6 +151,55 @@ public class PresenceActivity extends Activity {
 					PorterDuff.Mode.MULTIPLY);
 		} else { // bad things happened, hide the button
 			button.setVisibility(View.INVISIBLE);
+		}
+	}
+	
+	private void refresh() {
+		
+		// get the views that form the status bar
+		final TextView userName = (TextView) findViewById(R.id.profileName);
+		final TextView userPosition = (TextView) findViewById(R.id.profilePosition);
+		final Button mainButton = (Button) findViewById(R.id.mainButton);
+		
+		// create an instance of the api client
+		client = new PresenceApiClient(this);
+		
+		// get the user data
+		User user = client.getUserData();
+
+		// if we can not get the data we are offline
+		if (user != null) {
+
+			final String[] OPTIONS = new String[] {
+					getString(R.string.activity), getString(R.string.report),
+					getString(R.string.profile) };
+
+			ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(this,
+					R.layout.list_item, OPTIONS);
+
+			// configure the main menu
+			final ListView mainMenu = (ListView) findViewById(R.id.mainMenu);
+			mainMenu.setAdapter(menuAdapter);
+			mainMenu.setOnItemClickListener(mainMenuListener);
+			mainMenu.setDivider(new GradientDrawable(Orientation.RIGHT_LEFT,
+					new int[] { 0, 0xFF808080, 0 }));
+			mainMenu.setDividerHeight(1);
+
+			// populate the view with the data
+			userName.setText(user.getFirstname() + " " + user.getLastname());
+			userPosition.setText(user.getPosition());
+
+			// get the user status
+			Status status = client.getUserStatus();
+
+			// configure the main button based on user status
+			mainButton.setOnClickListener(mainButtonListener);
+			updateMainButtonStatus(status.getStatus());
+		
+		}else{ // display offline status
+			userName.setText(R.string.offline);
+			userPosition.setText(R.string.error_nostatus);
+			updateMainButtonStatus(PresenceConstants.NULL_STRING);
 		}
 	}
 }

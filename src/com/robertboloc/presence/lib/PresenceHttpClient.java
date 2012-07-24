@@ -12,6 +12,7 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
@@ -29,7 +30,10 @@ public class PresenceHttpClient {
             HttpParams params = new BasicHttpParams();
             HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
             HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
-     
+            
+            //set the connection timeout to 3 sec
+            HttpConnectionParams.setConnectionTimeout(params, 3000);
+            
             SchemeRegistry registry = new SchemeRegistry();
             registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
             registry.register(new Scheme("https", sf, 443));
