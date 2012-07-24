@@ -1,27 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Presence"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Presence"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:baselineAligned="true"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="15dp" >
 
     <TextView
-        android:id="@+id/profileName"
-        style="@style/Presence"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingTop="25dp"
-        android:textSize="25sp" />
+        android:text="@string/firstname"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/profilePosition"
-        android:layout_width="fill_parent"
+    <EditText
+        android:id="@+id/editFirstName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-5dp"
-        android:paddingLeft="15dp"
+        android:ems="10"
         android:textColor="@color/gray"
-        android:textSize="18sp" />
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lastname"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/editLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@color/gray"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/identifier"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/editIdentifier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@color/gray"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
 
 </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/updateProfile"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:text="@string/update" >
+        </Button>
+    </RelativeLayout>
+
+</RelativeLayout>

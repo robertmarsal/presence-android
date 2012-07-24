@@ -17,6 +17,10 @@
     <string name="enddate">End date</string>
     <string name="generate">Generate</string>
     <string name="period">Period</string>
+    <string name="firstname">First name</string>
+    <string name="lastname">Last name</string>
+    <string name="identifier">Identifier</string>
+    <string name="update">Update</string>
     <string name="total_time">Total time</string>
     <string name="total_checkins">Total checkins</string>
     <string name="total_incidences">Total incidences</string>

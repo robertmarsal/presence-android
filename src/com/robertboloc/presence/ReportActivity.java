@@ -1,11 +1,5 @@
 package com.robertboloc.presence;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +7,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
-
-import com.robertboloc.presence.lib.PresenceApiClient;
-import com.robertboloc.presence.pojo.Report;
 
 public class ReportActivity extends Activity {
 
