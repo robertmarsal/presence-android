@@ -53,7 +53,8 @@ public class PresenceActivity extends Activity {
 		// Handle item selection
 		switch (item.getItemId()) {
 		case R.id.incidence:
-			// TODO: show incindence screen
+			client.incidence();
+			this.refresh();
 			return true;
 		case R.id.refresh:
 			this.refresh();

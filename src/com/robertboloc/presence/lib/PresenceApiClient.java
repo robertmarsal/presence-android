@@ -216,4 +216,18 @@ public class PresenceApiClient {
 			return null;
 		}
 	}
+	
+	public Status incidence(){
+		
+		String incidence = this.get("user/incidence", null);
+		try{
+			Status status = this.mapper.readValue(incidence, Status.class);
+			if (status != null) {
+				status.setStatus(PresenceConstants.CHECKOUT);
+			}
+			return status;
+		} catch(Exception e){
+			return null;
+		}
+	}
 }
