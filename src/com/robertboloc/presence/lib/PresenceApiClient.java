@@ -184,6 +184,10 @@ public class PresenceApiClient {
 			return null;
 		}
 	}
+	
+	public void updateUser(List<NameValuePair> params){
+		this.get("user/update", params);
+	}
 
 	public Status checkin() {
 
