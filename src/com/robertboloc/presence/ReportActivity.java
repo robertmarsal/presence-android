@@ -29,9 +29,10 @@ public class ReportActivity extends Activity {
 			final DatePicker startDate = (DatePicker) findViewById(R.id.startdate);
 			final DatePicker endDate = (DatePicker) findViewById(R.id.enddate);
 
+			//months are 0 indexed
 			String start = startDate.getDayOfMonth() + "-"
-					+ startDate.getMonth() + "-" + startDate.getYear();
-			String end = endDate.getDayOfMonth() + "-" + endDate.getMonth()
+					+ (startDate.getMonth()+1) + "-" + startDate.getYear();
+			String end = endDate.getDayOfMonth() + "-" + (endDate.getMonth()+1)
 					+ "-" + endDate.getYear();
 
 			// display the report
