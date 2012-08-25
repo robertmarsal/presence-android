@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="brand">Presence</string>
+    <string name="activity">Activitat</string>
+    <string name="report">Informe</string>
+    <string name="profile">Perfil</string>
+    <string name="settings">Opcions</string>
+    <string name="provider">Proveïdor</string>
+    <string name="provider_desc">Servidor de la API</string>
+    <string name="checkin">Fitxar entrada</string>
+    <string name="checkout">Fitxar sortida</string>
+    <string name="incidence">Incidencia</string>
+    <string name="refresh">Refresca</string>
+    <string name="offline">Sense connexió</string>
+    <string name="startdate">Data inici</string>
+    <string name="enddate">Data fi</string>
+    <string name="generate">Genera</string>
+    <string name="period">Periode</string>
+    <string name="firstname">Nom</string>
+    <string name="lastname">Cognoms</string>
+    <string name="identifier">Identificadors</string>
+    <string name="update">Actualitza</string>
+    <string name="total_time">Temps total</string>
+    <string name="total_checkins">Entrades/Sortides totals</string>
+    <string name="total_incidences">Incidencies totals</string>
+    <string name="error_nouuid">Hi ha un problema amb el teu dispositiu. Sisplau contacta amb l\'administrador per reinstalar.</string>
+    <string name="error_nowifi">Wifi està desactivat, per continuar activa wifi</string>
+    <string name="error_noprovider">S\'ha d\'especificar el proveïdor de la API!</string>
+    <string name="error_norequest">La petició ha fallat!</string>
+    <string name="error_nostatus">No estàs en el radi d\'acció!</string>
+    <string name="popup_uuid_title">UUID del dispositiu</string>
+    <string name="profile_updated">El perfil d\'usuari s\'ha actualitzat!</string>
+
+</resources>
