@@ -99,8 +99,7 @@ public class PresenceActivity extends Activity {
 			Status st = client.getUserStatus();
 			if (st.getStatus().equalsIgnoreCase(PresenceConstants.CHECKIN)) {
 				st = client.checkout();
-			} else if (st.getStatus().equalsIgnoreCase(
-					PresenceConstants.CHECKOUT)) {
+			} else {
 				st = client.checkin();
 			}
 			updateMainButtonStatus(st.getStatus());
